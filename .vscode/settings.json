@@ -1,0 +1,35 @@
+{
+    "editor.wordWrapColumn": 80,
+    "editor.wordWrap": "wordWrapColumn",
+    "notebook.output.wordWrap": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**.dart_tool": true,
+        "build": false,
+        ".metadata": true,
+        ".packages": true,
+        "pubspec.lock": false,
+        "android": false,
+        "ios": false,
+        ".flutter-plugins": true,
+        ".flutter-plugins-dependencies": true,
+        "**/.fvm": true,
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.stickyScroll.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "pubspec.yaml": "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata",
+        "*.dart": "${capture}.g.dart, ${capture}.freezed.dart"
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+}
