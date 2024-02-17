@@ -3,14 +3,22 @@ description: "SDK library providing access to make easy and secure transactions 
 version: 0.0.1
 homepage: https://www.paidwork.com/
 
+assets:
+  - .env
 environment:
   sdk: '>=3.2.6 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
+  dartz: ^0.10.1
+  dotenv: ^4.2.0
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.1.0
   flutter_secure_storage: ^9.0.0
+  get_it: ^7.6.7
+  http: ^1.2.0
   injectable: ^2.3.2
   web3dart: ^2.7.2
 
@@ -18,5 +26,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  injectable_generator: ^2.4.1
+  build_runner: ^2.3.3
 
 flutter:
