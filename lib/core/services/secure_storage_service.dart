@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'package:worken_sdk/models/secure_item.dart';
+import 'package:worken_sdk/core/models/secure_item.dart';
 
 @LazySingleton()
 class SecureStorageService {
@@ -13,7 +13,7 @@ class SecureStorageService {
       await _secureStorage.write(key: item.id.name, value: item.value);
       return none();
     } catch (e) {
-      return some(item); //todo exception or failure
+      return none(); //todo exception or failure
     }
   }
 
