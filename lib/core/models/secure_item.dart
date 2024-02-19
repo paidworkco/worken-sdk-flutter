@@ -9,5 +9,5 @@ class SecureItem extends Equatable {
   const SecureItem({required this.id, required this.value});
 
   @override
-  List<Object> get props => throw UnimplementedError();
+  List<Object> get props => [id, value];
 }

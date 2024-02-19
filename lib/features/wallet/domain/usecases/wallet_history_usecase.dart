@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:worken_sdk/features/wallet/data/repositories/i_wallet_repository.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.dart';
-import 'package:worken_sdk/features/wallet/domain/repositories/i_wallet_repository.dart';
 
 class WalletHistoryUsecase {
   final IWalletRepository walletRepository;
