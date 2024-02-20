@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:worken_sdk/core/configuration/dotenv.dart';
 import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_balance_model.dart';
+import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
 import 'package:worken_sdk/features/wallet/data/repositories/i_wallet_repository.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.dart';
 
+@LazySingleton(as: IWalletRepository)
 class WalletRepository extends IWalletRepository {
   @override
   final IWalletRemoteDatasource walletDatasource;
@@ -18,10 +21,9 @@ class WalletRepository extends IWalletRepository {
   Future<Either<Exception, WalletHistoryEntity>> getHistory(
       String address) async {
     try {
-      final WalletHistoryEntity result =
+      final WalletHistoryModel result =
           await walletDatasource.getHistory(address);
-
-      return right(result);
+      return right(result.toEntity());
     } catch (e) {
       return left(Exception());
     }
@@ -30,8 +32,9 @@ class WalletRepository extends IWalletRepository {
   @override
   Future<Option<WalletBalanceModel>> getBalance() async {
     try {
-      final etherAmount = await web3client
-          .getBalance(EthereumAddress.fromHex(getContractAddress()));
+      final etherAmount = await web3client.getBalance(
+        EthereumAddress.fromHex(getContractAddress()),
+      );
 
       return some(WalletBalanceModel.fromAmount(etherAmount));
     } catch (e) {
