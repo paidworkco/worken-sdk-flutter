@@ -3,6 +3,7 @@ import 'package:worken_sdk/core/constants/routes.dart';
 import 'package:worken_sdk/core/extensions/map_extension.dart';
 import 'package:worken_sdk/core/extensions/response_extension.dart';
 import 'package:worken_sdk/core/factories/i_dio_factory.dart';
+import 'package:worken_sdk/core/models/errors/exceptions.dart';
 import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
 

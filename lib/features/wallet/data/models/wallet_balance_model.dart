@@ -5,9 +5,12 @@ class WalletBalanceModel extends WalletBalanceEntity {
   const WalletBalanceModel(
       {required super.wei, required super.ether, required super.hex});
 
-  factory WalletBalanceModel.fromAmount(EtherAmount amount) =>
-      WalletBalanceModel(
-          wei: amount.getInWei.toString(),
-          ether: amount.getValueInUnit(EtherUnit.ether).toString(),
-          hex: "0x${amount.getInWei.toRadixString(16)}");
+  factory WalletBalanceModel.fromAmount(BigInt amount) => WalletBalanceModel(
+      wei: amount.toString(),
+      ether:
+          EtherAmount.inWei(amount).getValueInUnit(EtherUnit.ether).toString(),
+      hex: '0x${amount.toRadixString(16)}');
+
+  WalletBalanceEntity toEntity() =>
+      WalletBalanceEntity(wei: wei, ether: ether, hex: hex);
 }
