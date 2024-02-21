@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:worken_sdk/core/models/errors/failures.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_balance_model.dart';
 import 'package:worken_sdk/features/wallet/data/services/i_wallet_service.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.dart';
@@ -16,7 +17,7 @@ class WalletService extends IWalletService {
   WalletService({required this.historyUsecase, required this.balanceUsecase});
 
   @override
-  Future<Either<Exception, WalletHistoryEntity>> getTransactions(
+  Future<Either<Failure, WalletHistoryEntity>> getTransactions(
           String address) async =>
       await historyUsecase.call(address);
 

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:worken_sdk/core/configuration/dotenv.dart';
+import 'package:worken_sdk/core/models/errors/failures.dart';
 import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_balance_model.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
@@ -18,23 +19,22 @@ class WalletRepository extends IWalletRepository {
   WalletRepository({required this.walletDatasource, required this.web3client});
 
   @override
-  Future<Either<Exception, WalletHistoryEntity>> getHistory(
+  Future<Either<Failure, WalletHistoryEntity>> getHistory(
       String address) async {
     try {
       final WalletHistoryModel result =
           await walletDatasource.getHistory(address);
       return right(result.toEntity());
     } catch (e) {
-      return left(Exception());
+      return left(Failure.byException(e));
     }
   }
 
   @override
   Future<Option<WalletBalanceModel>> getBalance() async {
     try {
-      final etherAmount = await web3client.getBalance(
-        EthereumAddress.fromHex(getContractAddress()),
-      );
+      final etherAmount = await web3client
+          .getBalance(EthereumAddress.fromHex(getContractAddress));
 
       return some(WalletBalanceModel.fromAmount(etherAmount));
     } catch (e) {
