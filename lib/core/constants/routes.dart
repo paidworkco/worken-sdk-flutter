@@ -5,5 +5,5 @@ class Routes {
   static const polygonUrl = 'https://api-testnet.polygonscan.com/api';
 
   static walletHistory(String address) =>
-      '$polygonUrl/?module=account&action=txlist&address=$address&startblock=0&endblock=99999999&sort=asc&apikey=${getPolygonApiKey()}';
+      '$polygonUrl/?module=account&action=txlist&address=$address&startblock=0&endblock=99999999&sort=asc&apikey=$getPolygonApiKey';
 }
