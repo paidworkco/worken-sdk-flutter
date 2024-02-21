@@ -15,5 +15,5 @@ Future<void> configureDotenv() async {
   }
 }
 
-String get getPolygonApiKey => dotenv.get(Constants.polygonApiKey);
-String get getContractAddress => dotenv.get(Constants.contractAddress);
+String get polygonApiKey => dotenv.get(Constants.polygonApiKey);
+String get contractAddress => dotenv.get(Constants.contractAddress);

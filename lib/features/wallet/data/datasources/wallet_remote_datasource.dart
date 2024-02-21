@@ -2,14 +2,15 @@ import 'package:injectable/injectable.dart';
 import 'package:worken_sdk/core/constants/routes.dart';
 import 'package:worken_sdk/core/extensions/map_extension.dart';
 import 'package:worken_sdk/core/extensions/response_extension.dart';
-import 'package:worken_sdk/core/factories/dio_factory.dart';
+import 'package:worken_sdk/core/factories/i_dio_factory.dart';
+import 'package:worken_sdk/core/models/errors/exceptions.dart';
 import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
 
 @LazySingleton(as: IWalletRemoteDatasource)
 class WalletRemoteDatasource extends IWalletRemoteDatasource {
   @override
-  final DioFactory dioFactory;
+  final IDioFactory dioFactory;
 
   WalletRemoteDatasource({required this.dioFactory});
 
@@ -22,6 +23,7 @@ class WalletRemoteDatasource extends IWalletRemoteDatasource {
         if (result.ok()) {
           return WalletHistoryModel.fromJson(result);
         }
+        throw PolygonException(result);
       }
       throw dioFactory.handleException(response);
     } catch (e) {
