@@ -3,8 +3,6 @@ description: "SDK library providing access to make easy and secure transactions 
 version: 0.0.1
 homepage: https://www.paidwork.com/
 
-assets:
-  - .env
 environment:
   sdk: '>=3.2.6 <4.0.0'
   flutter: ">=1.17.0"
@@ -31,3 +29,5 @@ dev_dependencies:
   build_runner: ^2.3.3
 
 flutter:
+  assets:
+    - .env
