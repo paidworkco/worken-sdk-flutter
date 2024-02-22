@@ -1,10 +1,11 @@
-import 'package:web3dart/web3dart.dart';
-import 'package:worken_sdk/features/wallet/data/services/wallet_service.dart';
+import 'package:worken_sdk/features/wallet/data/services/i_wallet_service.dart';
 
 abstract class IWorkenSdk {
-  abstract final Web3Client client;
+  //abstract final Web3Client client;
 
-  WalletService walletService();
+  void setup();
+
+  IWalletService walletService();
   //getNetworkService
   //getTransactionService
   //getContractService

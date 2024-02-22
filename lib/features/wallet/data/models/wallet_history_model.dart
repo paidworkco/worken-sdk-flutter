@@ -4,11 +4,13 @@ import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.
 class WalletHistoryModel extends WalletHistoryEntity {
   const WalletHistoryModel({required super.transactions});
 
-  factory WalletHistoryModel.fromJson(Map<String, dynamic> result) =>
+  factory WalletHistoryModel.fromJson(Map<String, dynamic> data) =>
       WalletHistoryModel(
-        transactions: (result as List)
-            .map((e) => WalletTransactionModel.fromJson(e))
-            .toList(),
+        transactions: data['result'].isNotEmpty
+            ? (data['result'] as List)
+                .map((e) => WalletTransactionModel.fromJson(e))
+                .toList()
+            : [],
       );
 
   WalletHistoryEntity toEntity() =>
