@@ -61,7 +61,6 @@ WorkenSdk.setup(
 | ```provider``` | ```Web3Client``` | if want to use yours client |
 | ```lcoator``` | ```GetIt``` | if want to use yours locator |
 ### Wallet
-### Wallet
 #### Get wallet balance
 TODO: 
 #### Get wallet information
