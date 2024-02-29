@@ -1,3 +1,5 @@
+import 'package:web3dart/web3dart.dart';
+
 class Abi {
   static const erc20balance = '''[
             {
@@ -8,4 +10,7 @@ class Abi {
               "type": "function"
             }
           ]''';
+
+  static ContractAbi get balance =>
+      ContractAbi.fromJson(Abi.erc20balance, 'ERC20Balance');
 }
