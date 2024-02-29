@@ -1,16 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:worken_sdk/core/models/errors/failures.dart';
-import 'package:worken_sdk/features/wallet/data/repositories/i_wallet_repository.dart';
+import 'package:worken_sdk/core/network/errors/failures.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.dart';
+import 'package:worken_sdk/features/wallet/domain/respositories/wallet_repository.dart';
 
 @LazySingleton()
 class WalletHistoryUsecase {
-  final IWalletRepository walletRepository;
+  final WalletRepository walletRepository;
 
   const WalletHistoryUsecase({required this.walletRepository});
 
-  Future<Either<Failure, WalletHistoryEntity>> call(String address) async {
-    return walletRepository.getHistory(address);
-  }
+  Future<Either<Failure, WalletHistoryEntity>> call(String address) async =>
+      await walletRepository.getHistory(address);
 }

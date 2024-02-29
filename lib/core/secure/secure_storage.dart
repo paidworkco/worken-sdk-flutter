@@ -1,7 +1,19 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'package:worken_sdk/core/models/secure_item.dart';
+
+enum SecuresId { none }
+
+class SecureItem extends Equatable {
+  final SecuresId id;
+  final String value;
+
+  const SecureItem({required this.id, required this.value});
+
+  @override
+  List<Object> get props => [id, value];
+}
 
 @LazySingleton()
 class SecureStorageService {

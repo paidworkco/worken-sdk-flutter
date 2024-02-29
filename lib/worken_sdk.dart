@@ -1,21 +1,18 @@
 library worken_sdk;
 
-import 'package:worken_sdk/core/configuration/dotenv.dart';
-import 'package:worken_sdk/core/configuration/injectable_config.dart';
-import 'package:worken_sdk/features/wallet/data/services/i_wallet_service.dart';
-import 'package:worken_sdk/i_worken_sdk.dart';
+import 'package:get_it/get_it.dart';
+import 'package:web3dart/web3dart.dart';
+import 'package:worken_sdk/core/di/injectable_config.dart';
+import 'package:worken_sdk/core/secure/dotenv.dart';
+import 'package:worken_sdk/features/wallet/domain/services/wallet_service.dart';
 
 /// A WorkenSdk.
-class WorkenSdk extends IWorkenSdk {
-  //@override
-  //final Web3Client client = Web3Client(Routes.maticvigil, Client());
-
-  @override
-  Future<void> setup() async {
-    configureGetIt();
+class WorkenSdk {
+  static Future<void> setup({Web3Client? provider, GetIt? locator}) async {
+    configureGetIt(provider, locator);
     await configureDotenv();
   }
 
-  @override
-  IWalletService walletService() => locator.get<IWalletService>();
+  /// Get wallet service from [locator]
+  static WalletService walletService() => locator.get<WalletService>();
 }

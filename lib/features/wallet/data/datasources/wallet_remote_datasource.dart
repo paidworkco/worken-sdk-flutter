@@ -1,33 +1,26 @@
 import 'package:injectable/injectable.dart';
 import 'package:worken_sdk/core/constants/routes.dart';
-import 'package:worken_sdk/core/extensions/map_extension.dart';
-import 'package:worken_sdk/core/extensions/response_extension.dart';
-import 'package:worken_sdk/core/factories/i_dio_factory.dart';
-import 'package:worken_sdk/core/models/errors/exceptions.dart';
-import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
+import 'package:worken_sdk/core/network/dio_factory.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
 
-@LazySingleton(as: IWalletRemoteDatasource)
-class WalletRemoteDatasource extends IWalletRemoteDatasource {
-  @override
-  final IDioFactory dioFactory;
+abstract class WalletRemoteDatasource {
+  abstract final DioFactory dioFactory;
 
-  WalletRemoteDatasource({required this.dioFactory});
+  Future<WalletHistoryModel> getHistory(String address);
+}
+
+@LazySingleton(as: WalletRemoteDatasource)
+class WalletRemoteDatasourceImpl extends WalletRemoteDatasource {
+  @override
+  final DioFactory dioFactory;
+
+  WalletRemoteDatasourceImpl({required this.dioFactory});
 
   @override
   Future<WalletHistoryModel> getHistory(String address) async {
-    try {
-      final response = await dioFactory.get(Routes.walletHistory(address));
-      if (response.successful()) {
-        final Map<String, dynamic> result = response.data;
-        if (result.ok()) {
-          return WalletHistoryModel.fromJson(result);
-        }
-        throw PolygonException(result);
-      }
-      throw dioFactory.handleException(response);
-    } catch (e) {
-      rethrow;
-    }
+    return await dioFactory
+        .get(Routes.walletHistory(address))
+        .then((result) => WalletHistoryModel.fromJson(result['result']))
+        .catchError((error) => throw error);
   }
 }

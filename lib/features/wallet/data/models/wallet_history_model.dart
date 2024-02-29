@@ -6,8 +6,8 @@ class WalletHistoryModel extends WalletHistoryEntity {
 
   factory WalletHistoryModel.fromJson(Map<String, dynamic> data) =>
       WalletHistoryModel(
-        transactions: data['result'].isNotEmpty
-            ? (data['result'] as List)
+        transactions: data.isNotEmpty
+            ? (data as List)
                 .map((e) => WalletTransactionModel.fromJson(e))
                 .toList()
             : [],
