@@ -37,11 +37,31 @@ SDK library providing access to make easy and secure transactions with Worken
 
 
 ## Configuration
-TODO: 
+To ensure flexibility and ease of integration, the Worken SDK allows for configuration through environmental variables. These variables can be set directly in your project's .env file. Below is a list of available configuration variables along with their descriptions:
+
+```WORKEN_POLYGONSCAN_APIKEY:``` This is your API key, which you can generate at: https://polygonscan.com/myapikey. The API key is required for accessing PolygonScan's data programmatically and is essential for querying transaction history, block information data and other blockchain-related information on the Polygon network.
 ## Usage
-TODO: 
+TODO:
+#### Install
+
+```
+ $ flutter pub add worken-sdk 
+```
 #### Initialization
-TODO: 
+```dart
+import 'package:worken_sdk/worken_sdk.dart';
+import 'package:get_it/get_it.dart';
+
+WorkenSdk.setup(
+      provider: Web3Client('https://rpc-mumbai.maticvigil.com/', Client()),
+      locator: GetIt.instance,
+    );
+```
+| **Parameter** | **Type** | **Description** |
+------|----|----
+| ```provider``` | ```Web3Client``` | if want to use yours client |
+| ```lcoator``` | ```GetIt``` | if want to use yours locator |
+### Wallet
 ### Wallet
 #### Get wallet balance
 TODO: 
