@@ -1,4 +1,4 @@
-import 'package:worken_sdk/core/crypto/key_factory.dart';
+import 'package:worken_sdk/core/crypto/crypto_helper.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_entity.dart';
 
 class WalletModel extends WalletEntity {

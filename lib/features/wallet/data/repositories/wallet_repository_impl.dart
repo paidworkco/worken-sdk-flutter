@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:worken_sdk/core/constants/abi.dart';
-import 'package:worken_sdk/core/crypto/key_factory.dart';
+import 'package:worken_sdk/core/crypto/crypto_helper.dart';
 import 'package:worken_sdk/core/network/errors/failures.dart';
 import 'package:worken_sdk/core/secure/dotenv.dart';
 import 'package:worken_sdk/features/wallet/data/datasources/wallet_remote_datasource.dart';
