@@ -68,7 +68,7 @@ WorkenSdk.walletService(); /// Service to extract functions
 ```
 or, if setup with locator
 ```dart
- locator.get<WalletService>(); ///Get service from locator
+ locator.get<WalletService>(); /// Get service from locator
 ```
 #### Get wallet balance
 ```dart
