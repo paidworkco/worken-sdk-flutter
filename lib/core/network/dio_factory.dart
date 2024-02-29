@@ -5,16 +5,16 @@ import 'package:worken_sdk/core/network/errors/exceptions.dart';
 import 'package:worken_sdk/core/network/results/data_result.dart';
 import 'package:worken_sdk/core/network/results/response_result.dart';
 
-abstract class IDioFactory {
+abstract class DioFactory {
   abstract Dio dio;
 
-  Future<Response> get(String route);
+  Future<Map<String, dynamic>> get(String route);
 
   Exception handleException(dynamic error);
 }
 
-@LazySingleton(as: IDioFactory)
-class DioFactory extends IDioFactory {
+@LazySingleton(as: DioFactory)
+class DioFactoryImpl extends DioFactory {
   @override
   Dio dio = Dio(
     BaseOptions(
@@ -26,13 +26,13 @@ class DioFactory extends IDioFactory {
   );
 
   @override
-  Future<Response> get(String route) async {
+  Future<Map<String, dynamic>> get(String route) async {
     try {
       final Response response = await dio.get(route);
       if (response.successful()) {
         final Map<String, dynamic> result = response.data;
         if (result.ok()) {
-          return response;
+          return result;
         }
       }
       throw handleException(response);
