@@ -24,7 +24,7 @@
     <a href="http://commitizen.github.io/cz-cli/">
         <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" />
     </a>
-    <a href="https://github.com/paidworkco/worken-sdk-php">
+    <a href="https://github.com/paidworkco/worken-sdk-flutter">
         <img alt="License" src="https://img.shields.io/github/license/paidworkco/worken-sdk-php" />
     </a>
     <a href="https://github.com/paidworkco/worken-sdk-flutter/pulls">
