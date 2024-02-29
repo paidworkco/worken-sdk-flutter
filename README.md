@@ -52,7 +52,8 @@ import 'package:worken_sdk/worken_sdk.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:get_it/get_it.dart';
 
-WorkenSdk.setup(
+/// Setup even if don't want to use your paths
+WorkenSdk.setup( 
       provider: Web3Client('https://rpc-mumbai.maticvigil.com/', Client()),
       locator: GetIt.instance,
     );
@@ -63,7 +64,7 @@ WorkenSdk.setup(
 | ```lcoator``` | ```GetIt``` | if want to use yours locator |
 ### Wallet
 ```dart
-WorkenSdk.walletService(); //service to extract functions
+WorkenSdk.walletService(); /// Service to extract functions
 ```
 #### Get wallet balance
 ```dart
