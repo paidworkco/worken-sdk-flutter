@@ -62,6 +62,9 @@ WorkenSdk.setup(
 | ```provider``` | ```Web3Client``` | if want to use yours client |
 | ```lcoator``` | ```GetIt``` | if want to use yours locator |
 ### Wallet
+```dart
+WorkenSdk.walletService(); //service to extract functions
+```
 #### Get wallet balance
 TODO: 
 #### Get wallet information
