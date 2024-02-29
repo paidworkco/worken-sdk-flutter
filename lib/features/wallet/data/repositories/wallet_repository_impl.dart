@@ -1,24 +1,25 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:worken_sdk/core/configuration/dotenv.dart';
 import 'package:worken_sdk/core/constants/abi.dart';
-import 'package:worken_sdk/core/models/errors/failures.dart';
-import 'package:worken_sdk/features/wallet/data/datasources/i_wallet_remote_datasource.dart';
+import 'package:worken_sdk/core/network/errors/failures.dart';
+import 'package:worken_sdk/core/secure/dotenv.dart';
+import 'package:worken_sdk/features/wallet/data/datasources/wallet_remote_datasource.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_balance_model.dart';
 import 'package:worken_sdk/features/wallet/data/models/wallet_history_model.dart';
-import 'package:worken_sdk/features/wallet/data/repositories/i_wallet_repository.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_balance_entity.dart';
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_history_entity.dart';
+import 'package:worken_sdk/features/wallet/domain/respositories/wallet_repository.dart';
 
-@LazySingleton(as: IWalletRepository)
-class WalletRepository extends IWalletRepository {
+@LazySingleton(as: WalletRepository)
+class WalletRepositoryImpl extends WalletRepository {
   @override
-  final IWalletRemoteDatasource walletDatasource;
+  final WalletRemoteDatasource walletDatasource;
   @override
   final Web3Client web3client;
 
-  WalletRepository({required this.walletDatasource, required this.web3client});
+  WalletRepositoryImpl(
+      {required this.walletDatasource, required this.web3client});
 
   @override
   Future<Either<Failure, WalletHistoryEntity>> getHistory(
@@ -28,32 +29,20 @@ class WalletRepository extends IWalletRepository {
           await walletDatasource.getHistory(address);
       return right(result.toEntity());
     } catch (e) {
-      return left(Failure.byException(e));
+      return left(Failure.fromException(e));
     }
   }
-
-  /* @override
-  Future<Option<WalletBalanceEntity>> getBalance() async {
-    try {
-      final etherAmount = await web3client
-          .getBalance(EthereumAddress.fromHex(getContractAddress));
-
-      return some(WalletBalanceModel.fromAmount(etherAmount).toEntity());
-    } catch (e) {
-      return none();
-    }
-  }*/
 
   @override
   Future<Option<WalletBalanceEntity>> getBalance(String address) async {
     try {
       final DeployedContract contract = DeployedContract(
-          ContractAbi.fromJson(Abi.erc20balance, 'ERC20Balance'),
-          EthereumAddress.fromHex(contractAddress));
-      final ContractFunction function = contract.function('balanceOf');
+        Abi.balance,
+        EthereumAddress.fromHex(contractAddress),
+      );
       final result = await web3client.call(
+        function: contract.function('balanceOf'),
         contract: contract,
-        function: function,
         params: [address],
       );
 
