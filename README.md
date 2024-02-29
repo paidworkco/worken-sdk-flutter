@@ -27,7 +27,7 @@
     <a href="https://github.com/paidworkco/worken-sdk-php">
         <img alt="License" src="https://img.shields.io/github/license/paidworkco/worken-sdk-php" />
     </a>
-    <a href="https://github.com/paidworkco/worken-sdk-php/pulls">
+    <a href="https://github.com/paidworkco/worken-sdk-flutter/pulls">
         <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
     </a>
 </p>
