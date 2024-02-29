@@ -49,6 +49,7 @@ To ensure flexibility and ease of integration, the Worken SDK allows for configu
 #### Initialization
 ```dart
 import 'package:worken_sdk/worken_sdk.dart';
+import 'package:web3dart/web3dart.dart';
 import 'package:get_it/get_it.dart';
 
 WorkenSdk.setup(
