@@ -66,7 +66,18 @@ WorkenSdk.setup(
 WorkenSdk.walletService(); //service to extract functions
 ```
 #### Get wallet balance
-TODO: 
+```dart
+WorkenSdk.walletService().getBalance(address: walletAddress);
+```
+| **Parameter** | **Type** | **Description** |
+------|----|----
+| ``address`` | ``String`` | **Required** Your wallet address |
+
+This structure details the balance of a wallet in terms of the WORK token specified in contract, providing the balance in WEI, Ether, and Hexadecimal units.
+
+ - ``WEI (String)``: The balance of the wallet expressed in WEI, which is the smallest denomination of Ether. Given its size, the balance is represented as a string to maintain precision. Example: ``11820000000000000000000``
+ - ``Ether (String)``: The balance of the wallet converted into Ether, offering a more readable and commonly used representation of the balance. This conversion is necessary for understanding the balance in terms of Ether, which is more familiar to users. Example: ``11820.000000000000000000``
+ - ``Hex (String)``: The balance of the wallet expressed as a hexadecimal value. This format is often used in lower-level blockchain operations and interactions. Example: ``0x0280c373aef4bd300000``
 #### Get wallet information
 TODO: 
 
