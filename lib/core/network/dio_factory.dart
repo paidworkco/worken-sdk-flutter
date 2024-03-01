@@ -11,6 +11,8 @@ abstract class DioFactory {
   Future<Map<String, dynamic>> get(String route);
 
   Exception handleException(dynamic error);
+
+  Exception deafultException(dynamic error);
 }
 
 @LazySingleton(as: DioFactory)
@@ -54,6 +56,21 @@ class DioFactoryImpl extends DioFactory {
     } else if (error is DioException) {
       throw RestException(error.type, error.message ?? "Bad response");
     }
-    throw error;
+
+    throw deafultException(error);
+  }
+
+  @override
+  Exception deafultException(dynamic error) {
+    if (error is FormatException ||
+        error is ArgumentError ||
+        error is TypeError) {
+      return const UnprocessableException(
+          "Incorrect values ​​were passed to build the object");
+    } else if (error is NoSuchMethodError) {
+      return const UnprocessableException(
+          "the values ​​passed are most likely null");
+    }
+    return error;
   }
 }

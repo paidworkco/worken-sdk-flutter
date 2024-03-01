@@ -8,6 +8,9 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  bip32: ^2.0.0
+  bip39: ^1.0.6
+  crypto: ^3.0.3
   dartz: ^0.10.1
   dio: ^5.4.1
   dotenv: ^4.2.0
@@ -17,6 +20,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   flutter_secure_storage: ^9.0.0
   get_it: ^7.6.7
+  hex: ^0.2.0
   http: ^1.2.0
   injectable: ^2.3.2
   web3dart: ^2.7.2

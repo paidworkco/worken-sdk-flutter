@@ -11,4 +11,12 @@ class Routes {
       '&endblock=99999999'
       '&sort=asc'
       '&apikey=$polygonApiKey';
+
+  static String blocInformation(int bloc) => '$polygonUrl?module=account'
+      '&action=tokentx'
+      '&contractaddress=$contractAddress'
+      '&startblock=$bloc'
+      '&endblock=$bloc'
+      '&sort=asc'
+      '&apikey=$polygonApiKey';
 }

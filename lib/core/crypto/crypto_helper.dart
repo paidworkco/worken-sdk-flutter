@@ -26,7 +26,6 @@ class CryptoHelper {
     };
 
     /*    ED25519_HD_KEY.getPublicKey(priv)
-    ///FIXME - fix
     var seedBuffer = Uint8List.fromList(HEX.decode(entropy));
     var master = HDWallet.fromSeed(seed: seedBuffer);
     var child = master.deriveKeyByPath(path: "m/44'/60'/0'/0/0");

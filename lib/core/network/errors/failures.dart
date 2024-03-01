@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:worken_sdk/core/network/errors/exceptions.dart';
 
-enum FailureType { unknow, polygon, response, restApi }
+enum FailureType { unknow, polygon, response, restApi, unprocessableEntity }
 
 class Failure extends Equatable {
   final dynamic message;
@@ -9,15 +9,17 @@ class Failure extends Equatable {
 
   const Failure(this.message, this.type);
 
-  factory Failure.fromException(dynamic exception) {
-    if (exception is PolygonException) {
-      return Failure(exception.message, FailureType.polygon);
-    } else if (exception is ResponseException) {
-      return Failure(exception.message, FailureType.response);
-    } else if (exception is RestException) {
-      return Failure(exception.message, FailureType.restApi);
+  factory Failure.fromException(dynamic error) {
+    if (error is PolygonException) {
+      return Failure(error.message, FailureType.polygon);
+    } else if (error is ResponseException) {
+      return Failure(error.message, FailureType.response);
+    } else if (error is RestException) {
+      return Failure(error.message, FailureType.restApi);
+    } else if (error is UnprocessableException) {
+      return Failure(error.message, FailureType.unprocessableEntity);
     }
-    return Failure(exception.toString(), FailureType.unknow);
+    return Failure(error.toString(), FailureType.unknow);
   }
 
   @override
