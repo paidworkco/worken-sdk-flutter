@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+typedef WalletTransactionsEntity = List<WalletTransactionEntity>;
+
 class WalletTransactionEntity extends Equatable {
   final String blockNumber;
   final String timeStamp;

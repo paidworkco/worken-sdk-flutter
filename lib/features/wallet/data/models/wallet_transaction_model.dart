@@ -1,5 +1,7 @@
 import 'package:worken_sdk/features/wallet/domain/entites/wallet_transaction_entity.dart';
 
+typedef WalletTransactionsModel = List<WalletTransactionModel>;
+
 class WalletTransactionModel extends WalletTransactionEntity {
   const WalletTransactionModel(
       {required super.blockNumber,
