@@ -10,7 +10,6 @@ class GetTransactionStatusUseCase {
 
   GetTransactionStatusUseCase({required this.transactionRepository});
 
-  Future<Either<Failure, TransactionStatusEntity>> call(String txhash) async {
-    return await transactionRepository.getTransactionStatus(txhash);
-  }
+  Future<Either<Failure, TransactionStatusEntity>> call(String txhash) async =>
+      await transactionRepository.getTransactionStatus(txhash);
 }
