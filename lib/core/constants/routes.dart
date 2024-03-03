@@ -19,4 +19,10 @@ class Routes {
       '&endblock=$bloc'
       '&sort=asc'
       '&apikey=$polygonApiKey';
+
+  static String transactionStatus(String txhash) =>
+      '$polygonUrl?module=transaction'
+      '&action=gettxreceiptstatus'
+      'txhash=$txhash'
+      '&apikey=$polygonApiKey';
 }
