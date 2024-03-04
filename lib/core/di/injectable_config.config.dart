@@ -59,7 +59,6 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i5.TransactionRemoteDatasource>(
         () => _i5.TransactionRemoteDatasourceImpl(
               dioFactory: gh<_i3.DioFactory>(),
-              web3client: gh<_i6.Web3Client>(),
             ));
     gh.lazySingleton<_i7.TransactionRepository>(() =>
         _i8.TransactionRepositoryImpl(

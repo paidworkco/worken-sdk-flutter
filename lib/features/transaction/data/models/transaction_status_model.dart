@@ -11,16 +11,6 @@ class TransactionStatusModel extends TransactionStatusEntity {
       TransactionStatusModel(
         message: json['message'],
         result: json['result'],
-        status:
-            TransactionStatusResultModel.fromJson(json['status']).toString(),
-      );
-}
-
-class TransactionStatusResultModel extends TransactionStatusResultEntity {
-  const TransactionStatusResultModel({required super.status});
-
-  factory TransactionStatusResultModel.fromJson(Map<String, dynamic> json) =>
-      TransactionStatusResultModel(
-        status: json['status'],
+        status: json['result']['status'],
       );
 }

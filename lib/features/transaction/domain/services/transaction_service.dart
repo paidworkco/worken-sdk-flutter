@@ -11,6 +11,7 @@ abstract class TransactionService {
   ///
   ///[txhash] is representing the transaction hash to check the execution status
   /// Status field returns 0 for failed transactions and 1 for successful ones
+
   Future<Either<Failure, TransactionStatusEntity>> getTransactionStatus(
       {required String txhash});
 }

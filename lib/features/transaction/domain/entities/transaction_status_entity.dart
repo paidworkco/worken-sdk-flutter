@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class TransactionStatusEntity extends Equatable {
   final String status;
   final String message;
-  final TransactionStatusResultEntity result;
+  final String result;
 
   const TransactionStatusEntity({
     required this.status,
@@ -12,13 +12,4 @@ class TransactionStatusEntity extends Equatable {
   });
   @override
   List<Object> get props => [status, message, result];
-}
-
-class TransactionStatusResultEntity extends Equatable {
-  final String status;
-
-  const TransactionStatusResultEntity({required this.status});
-
-  @override
-  List<Object> get props => [status];
 }
