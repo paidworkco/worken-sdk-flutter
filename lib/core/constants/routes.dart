@@ -19,4 +19,8 @@ class Routes {
       '&endblock=$bloc'
       '&sort=asc'
       '&apikey=$polygonApiKey';
+
+  static String monitorCongestion = '$polygonUrl?module=gastracker'
+      '&action=gasoracle'
+      '&apikey=$polygonApiKey';
 }

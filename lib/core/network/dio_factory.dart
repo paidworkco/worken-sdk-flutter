@@ -47,17 +47,17 @@ class DioFactoryImpl extends DioFactory {
   Exception handleException(dynamic error) {
     if (error is Response) {
       if (error.successful()) {
-        throw PolygonException(error.data);
+        return PolygonException(error.data);
       }
-      throw ResponseException(
+      return ResponseException(
           code: error.statusCode ?? 0,
           message: error.statusMessage ?? "Bad response",
           data: error.data);
     } else if (error is DioException) {
-      throw RestException(error.type, error.message ?? "Bad response");
+      return RestException(error.type, error.message ?? "Bad response");
     }
 
-    throw deafultException(error);
+    return deafultException(error);
   }
 
   @override

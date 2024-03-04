@@ -35,14 +35,11 @@ class WalletRemoteDatasourceImpl extends WalletRemoteDatasource {
     try {
       final Map<String, dynamic> result =
           await dioFactory.get(Routes.walletHistory(address));
-
-      return result["data"].isNotEmpty
-          ? (result["data"] as List)
-              .map((e) => WalletTransactionModel.fromJson(e))
-              .toList()
-          : <WalletTransactionModel>[];
+      return List.of(result["result"])
+          .map((e) => WalletTransactionModel.fromJson(e))
+          .toList();
     } catch (e) {
-      rethrow;
+      throw dioFactory.handleException(e);
     }
   }
 
@@ -50,12 +47,12 @@ class WalletRemoteDatasourceImpl extends WalletRemoteDatasource {
   Future<WalletModel> createWallet(int words) async {
     try {
       final String seedphrase = CryptoHelper.generateSeedPhrase(words);
-      final Map<String, dynamic> wallet =
+      final Map<String, dynamic> keys =
           CryptoHelper.generateKeysfromSeedPhrase(seedphrase);
 
-      return WalletModel.fromJson(wallet);
+      return WalletModel.fromJson(keys);
     } catch (e) {
-      throw dioFactory.deafultException(e);
+      throw dioFactory.handleException(e);
     }
   }
 
@@ -75,7 +72,7 @@ class WalletRemoteDatasourceImpl extends WalletRemoteDatasource {
 
       return WalletBalanceModel.fromAmount(amount);
     } catch (e) {
-      throw dioFactory.deafultException(e);
+      throw dioFactory.handleException(e);
     }
   }
 }
