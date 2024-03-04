@@ -23,8 +23,6 @@ import 'package:worken_sdk/features/transaction/domain/repositories/transaction_
     as _i7;
 import 'package:worken_sdk/features/transaction/domain/services/transaction_service.dart'
     as _i15;
-import 'package:worken_sdk/features/transaction/domain/usecases/get_recent_transaction_usecase.dart'
-    as _i13;
 import 'package:worken_sdk/features/transaction/domain/usecases/get_transaction_status_usecase.dart'
     as _i14;
 import 'package:worken_sdk/features/wallet/data/datasources/wallet_remote_datasource.dart'
@@ -76,15 +74,12 @@ extension GetItInjectableX on _i1.GetIt {
         walletDatasource: gh<_i9.WalletRemoteDatasource>()));
     gh.lazySingleton<_i12.WalletUsecase>(() =>
         _i12.WalletUsecase(walletRepository: gh<_i10.WalletRepository>()));
-    gh.lazySingleton<_i13.GetRecentTransactionUsecase>(() =>
-        _i13.GetRecentTransactionUsecase(
-            transactionRepository: gh<_i7.TransactionRepository>()));
+
     gh.lazySingleton<_i14.GetTransactionStatusUseCase>(() =>
         _i14.GetTransactionStatusUseCase(
             transactionRepository: gh<_i7.TransactionRepository>()));
     gh.lazySingleton<_i15.TransactionService>(() => _i16.TransactionServiceImpl(
           getTransactionStatusUseCase: gh<_i14.GetTransactionStatusUseCase>(),
-          getRecentTransactionUsecase: gh<_i13.GetRecentTransactionUsecase>(),
         ));
     gh.lazySingleton<_i17.WalletBalanceUsecase>(() => _i17.WalletBalanceUsecase(
         walletRepository: gh<_i10.WalletRepository>()));

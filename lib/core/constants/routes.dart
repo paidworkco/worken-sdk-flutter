@@ -25,15 +25,4 @@ class Routes {
       '&action=gettxreceiptstatus'
       'txhash=$txhash'
       '&apikey=$polygonApiKey';
-
-  static String getLastTransaction(
-          String address, int startblock, int endblock, int page) =>
-      '$polygonUrl?module=account'
-      '&action=txlist&addres=$address'
-      '&startblock=$startblock'
-      '&endblock=$endblock'
-      '&page=$page'
-      '&offset=1'
-      '&sort=desc'
-      '&apiKey=$polygonApiKey';
 }
