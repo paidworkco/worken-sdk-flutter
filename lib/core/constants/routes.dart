@@ -24,5 +24,8 @@ class Routes {
       '$polygonUrl?module=transaction'
       '&action=gettxreceiptstatus'
       'txhash=$txhash'
+
+  static String monitorCongestion = '$polygonUrl?module=gastracker'
+      '&action=gasoracle'
       '&apikey=$polygonApiKey';
 }
