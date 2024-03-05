@@ -20,6 +20,11 @@ class Routes {
       '&sort=asc'
       '&apikey=$polygonApiKey';
 
+  static String transactionStatus(String txhash) =>
+      '$polygonUrl?module=transaction'
+      '&action=gettxreceiptstatus'
+      'txhash=$txhash'
+
   static String monitorCongestion = '$polygonUrl?module=gastracker'
       '&action=gasoracle'
       '&apikey=$polygonApiKey';
