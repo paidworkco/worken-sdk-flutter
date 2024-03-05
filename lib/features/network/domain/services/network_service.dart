@@ -4,6 +4,7 @@ import 'package:worken_sdk/features/network/domain/entities/block_information_en
 import 'package:worken_sdk/features/network/domain/entities/congestion_entity.dart';
 import 'package:worken_sdk/features/network/domain/entities/network_status_entity.dart';
 import 'package:worken_sdk/features/network/domain/usecase/bloc_information_usecase.dart';
+import 'package:worken_sdk/features/network/domain/usecase/estimated_gas_usecase.dart';
 import 'package:worken_sdk/features/network/domain/usecase/monitor_congestion_usecase.dart';
 import 'package:worken_sdk/features/network/domain/usecase/network_status_usecase.dart';
 
@@ -16,6 +17,9 @@ abstract class NetworkService {
 
   /// Path to deliver information from [web3]
   abstract final NetworkStatusUsecase networkStatusUsecase;
+
+  /// Path to deliver information from [web3]
+  abstract final EstimateGasUsecase estimateGasUsecase;
 
   /// Get block information
   ///
@@ -30,4 +34,8 @@ abstract class NetworkService {
   ///
   /// with [Syncing], [WalletBalance], [hashrate], [latestBlock]
   Future<Either<Failure, NetworkStatusEntity>> getNetworkStatus();
+
+  /// Get Estimated Gas from [web3]
+  Future<Either<Failure, BigInt>> getEstimatedGas(
+      {required String from, required String to, required String amount});
 }

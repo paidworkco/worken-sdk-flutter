@@ -12,4 +12,6 @@ abstract class NetworkRepository {
       int blocNumber);
   Future<Either<Failure, CongestionEntity>> getMonitorCongestion();
   Future<Either<Failure, NetworkStatusEntity>> getNetworkStatus();
+  Future<Either<Failure, BigInt>> getEstimatedGas(
+      String from, String to, String amount);
 }

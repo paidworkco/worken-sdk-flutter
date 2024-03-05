@@ -51,4 +51,17 @@ class NetworkRepositoryImpl extends NetworkRepository {
       return left(Failure.fromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, BigInt>> getEstimatedGas(
+      String from, String to, String amount) async {
+    try {
+      final BigInt result =
+          await networkDatasource.getEstimatedGas(from, to, amount);
+
+      return right(result);
+    } catch (e) {
+      return left(Failure.fromException(e));
+    }
+  }
 }

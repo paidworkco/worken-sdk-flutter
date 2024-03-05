@@ -23,7 +23,7 @@ class Routes {
   static String transactionStatus(String txhash) =>
       '$polygonUrl?module=transaction'
       '&action=gettxreceiptstatus'
-      'txhash=$txhash'
+      'txhash=$txhash';
 
   static String monitorCongestion = '$polygonUrl?module=gastracker'
       '&action=gasoracle'
