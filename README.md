@@ -6,7 +6,7 @@
   Send & Receive secure Blockchain transactions with Worken
 </h3>
 <p align="center">
-  🚀 Over 15M+ Users using <a href="https://www.paidwork.com/?utm_source=github.com&utm_medium=referral&utm_campaign=readme">WORK!</a>
+  🚀 Over 15M+ Users using Worken!
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
     </a>
 </p>
 
-SDK library providing access to make easy and secure Blockchain transactions with Worken
+SDK library providing access to make easy and secure Blockchain transactions with Worken. <a href="https://www.paidwork.com/worken?utm_source=github.com&utm_medium=referral&utm_campaign=readme" target="_blank">Read more</a> about Worken Token.
 
 ## Configuration
 To ensure flexibility and ease of integration, the Worken SDK allows for configuration through environmental variables. These variables can be set directly in your project's .env file. Below is a list of available configuration variables along with their descriptions:
