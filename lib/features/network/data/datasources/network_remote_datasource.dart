@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:worken_sdk/core/constants/abi.dart';
 import 'package:worken_sdk/core/constants/routes.dart';
@@ -18,6 +19,7 @@ abstract class NetworkRemoteDatasource {
   Future<BigInt> getEstimatedGas(String from, String to, String amount);
 }
 
+@LazySingleton(as: NetworkRemoteDatasource)
 class NetworkRemoteDatasourceImpl extends NetworkRemoteDatasource {
   @override
   DioFactory dioFactory;

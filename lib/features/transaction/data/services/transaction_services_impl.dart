@@ -13,6 +13,7 @@ class TransactionServiceImpl implements TransactionService {
 
   @override
   Future<Either<Failure, TransactionStatusEntity>> getTransactionStatus(
-          {required String txhash}) async =>
-      await getTransactionStatusUseCase.call(txhash);
+      {required String txhash}) async {
+    return await getTransactionStatusUseCase.call(txhash);
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:worken_sdk/core/network/errors/failures.dart';
 import 'package:worken_sdk/features/network/data/datasources/network_remote_datasource.dart';
 import 'package:worken_sdk/features/network/data/models/bloc_information_model.dart';
@@ -9,6 +10,7 @@ import 'package:worken_sdk/features/network/domain/entities/congestion_entity.da
 import 'package:worken_sdk/features/network/domain/entities/network_status_entity.dart';
 import 'package:worken_sdk/features/network/domain/repositories/network_repository.dart';
 
+@LazySingleton(as: NetworkRepository)
 class NetworkRepositoryImpl extends NetworkRepository {
   @override
   final NetworkRemoteDatasource networkDatasource;

@@ -25,16 +25,19 @@ class WalletServiceImpl extends WalletService {
 
   @override
   Future<Either<Failure, WalletEntity>> createWallet(
-          {required int words}) async =>
-      await walletUsecase.call(words);
+      {required int words}) async {
+    return await walletUsecase.call(words);
+  }
 
   @override
   Future<Either<Failure, WalletTransactionsEntity>> getTransactions(
-          {required String address}) async =>
-      await historyUsecase.call(address);
+      {required String address}) async {
+    return await historyUsecase.call(address);
+  }
 
   @override
   Future<Either<Failure, WalletBalanceEntity>> getBalance(
-          {required String address}) async =>
-      await balanceUsecase.call(address);
+      {required String address}) async {
+    return await balanceUsecase.call(address);
+  }
 }

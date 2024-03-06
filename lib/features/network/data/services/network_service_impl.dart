@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:worken_sdk/core/network/errors/failures.dart';
 import 'package:worken_sdk/features/network/domain/entities/block_information_entity.dart';
 import 'package:worken_sdk/features/network/domain/entities/congestion_entity.dart';
@@ -9,6 +10,7 @@ import 'package:worken_sdk/features/network/domain/usecase/estimated_gas_usecase
 import 'package:worken_sdk/features/network/domain/usecase/monitor_congestion_usecase.dart';
 import 'package:worken_sdk/features/network/domain/usecase/network_status_usecase.dart';
 
+@LazySingleton(as: NetworkService)
 class NetworkServiceImpl extends NetworkService {
   @override
   final BlocInfomartionUsecase blocInfomartionUsecase;
@@ -27,21 +29,25 @@ class NetworkServiceImpl extends NetworkService {
 
   @override
   Future<Either<Failure, BlockInformationEntity>> getBlocInformation(
-          {required int bloc}) async =>
-      await blocInfomartionUsecase.call(bloc);
+      {required int bloc}) async {
+    return await blocInfomartionUsecase.call(bloc);
+  }
 
   @override
-  Future<Either<Failure, CongestionEntity>> getMonitorCongestion() async =>
-      await monitorCongestionUsecase.call();
+  Future<Either<Failure, CongestionEntity>> getMonitorCongestion() async {
+    return await monitorCongestionUsecase.call();
+  }
 
   @override
-  Future<Either<Failure, NetworkStatusEntity>> getNetworkStatus() async =>
-      await networkStatusUsecase.call();
+  Future<Either<Failure, NetworkStatusEntity>> getNetworkStatus() async {
+    return await networkStatusUsecase.call();
+  }
 
   @override
   Future<Either<Failure, BigInt>> getEstimatedGas(
-          {required String from,
-          required String to,
-          required String amount}) async =>
-      await estimateGasUsecase.call(from, to, amount);
+      {required String from,
+      required String to,
+      required String amount}) async {
+    return await estimateGasUsecase.call(from, to, amount);
+  }
 }

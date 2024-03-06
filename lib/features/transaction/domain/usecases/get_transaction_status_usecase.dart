@@ -4,7 +4,7 @@ import 'package:worken_sdk/core/network/errors/failures.dart';
 import 'package:worken_sdk/features/transaction/domain/entities/transaction_status_entity.dart';
 import 'package:worken_sdk/features/transaction/domain/repositories/transaction_repository.dart';
 
-@lazySingleton
+@LazySingleton()
 class GetTransactionStatusUseCase {
   final TransactionRepository transactionRepository;
 
