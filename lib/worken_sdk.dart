@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:worken_sdk/core/di/injectable_config.dart';
 import 'package:worken_sdk/core/secure/dotenv.dart';
+import 'package:worken_sdk/features/contract/domain/services/contract_service.dart';
 import 'package:worken_sdk/features/network/domain/services/network_service.dart';
 import 'package:worken_sdk/features/transaction/domain/services/transaction_service.dart';
 import 'package:worken_sdk/features/wallet/domain/services/wallet_service.dart';
@@ -24,4 +25,7 @@ class WorkenSdk {
 
   /// Get informations about your network from [locator]
   static NetworkService networkService() => locator.get<NetworkService>();
+
+  /// Get informations about your contract from [locator]
+  static ContractService contractService() => locator.get<ContractService>();
 }

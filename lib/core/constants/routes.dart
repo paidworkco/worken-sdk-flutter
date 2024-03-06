@@ -28,4 +28,9 @@ class Routes {
   static String monitorCongestion = '$polygonUrl?module=gastracker'
       '&action=gasoracle'
       '&apikey=$polygonApiKey';
+
+  static String contractSource = '$polygonUrl?module=contract'
+      '&action=getsourcecode'
+      '&address=$contractAddress'
+      '&apikey=$polygonApiKey';
 }
