@@ -8,7 +8,8 @@ abstract class TransactionRemoteDatasource {
   abstract final DioFactory dioFactory;
   abstract final Web3Client web3client;
   Future<TransactionStatusModel> getTransactionStatus(String txhash);
-  Future<void> sendTransaction(String fromAddress, String toAddress);
+  Future<void> sendTransaction(
+      String senderAddress, String recepientAddress, BigInt amount);
 }
 
 @LazySingleton(as: TransactionRemoteDatasource)
@@ -34,13 +35,23 @@ class TransactionRemoteDatasourceImpl implements TransactionRemoteDatasource {
   }
 
   @override
-  Future<void> sendTransaction(String fromAddress, String toAddress) async {
+  Future<void> sendTransaction(
+    String senderAddress,
+    String recepientAddress,
+    BigInt amount,
+  ) async {
     try {
-      //TODO
-      //TODO 1: credentials from private key
-      //TODO 2: Get amount and check if its not 0
-      //TODO 3: client.sendtransaction with credentials, recepient address, gasprice and value
-      //TODO 4: Receive transaction is from getTransaction already
+      final credentials = EthPrivateKey.fromHex(senderAddress);
+      await web3client.sendTransaction(
+          credentials,
+          Transaction(
+              from: EthereumAddress.fromHex(senderAddress),
+              to: EthereumAddress.fromHex(recepientAddress),
+              gasPrice: EtherAmount.inWei(BigInt.one),
+
+              ///RPC server will choose max gas price from [Web3Client.getEstimatedGas() function]
+              maxGas: null,
+              value: EtherAmount.fromBigInt(EtherUnit.szabo, amount)));
     } catch (e) {
       rethrow;
     }
