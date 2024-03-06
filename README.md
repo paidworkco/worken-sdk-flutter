@@ -48,7 +48,7 @@ import 'package:web3dart/web3dart.dart';
 import 'package:get_it/get_it.dart';
 
 /// Setup even if don't want to use your paths
-WorkenSdk.setup( 
+await WorkenSdk.setup( 
       provider: Web3Client('https://rpc-mumbai.maticvigil.com/', Client()),
       locator: GetIt.instance, // your locator
     );
@@ -122,7 +122,13 @@ This structure outlines the output of the `createWallet()` function, which gener
 - `address (string)`: The Ethereum address generated from the public key, expressed as a 42-character hexadecimal string. This address is used for sending and receiving funds.
 
 ### Contract
-
+```dart
+WorkenSdk.contractService(); /// Service to extract functions
+```
+also, if setup with locator
+```dart
+ locator.get<ContractService>(); /// Get service from locator
+```
 #### Show contract status 
 ```dart
 WorkenSdk.contractService().getContractStatus();
@@ -138,14 +144,26 @@ WorkenSdk.contractService().getContractSource();
 This function give all ABI functions of Worken contract in `string`.
 
 ### Transactions
-
+```dart
+WorkenSdk.transactionsService(); /// Service to extract functions
+```
+also, if setup with locator
+```dart
+ locator.get<TransactionsService>(); /// Get service from locator
+```
 #### Send transaction 
 
 #### Show transaction status
 #### Show recent transactions (10)
 
 ### Network
-
+```dart
+WorkenSdk.networkService(); /// Service to extract functions
+```
+also, if setup with locator
+```dart
+ locator.get<NetworkService>(); /// Get service from locator
+```
 #### Show block information
 ```dart
 WorkenSdk.networkService().getBlocInformation(bloc: 20);
